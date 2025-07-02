@@ -11,16 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
         
-        // Add a small delay to show the loading state
+        // Reset form and button state
+        form.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+        
+        // Redirect to contact-us page after a short delay
         setTimeout(() => {
-            // Show success message
-            alert('Thank you! We have received your information.');
-            
-            // Reset form and button state
-            form.reset();
-            submitButton.disabled = false;
-            submitButton.textContent = originalButtonText;
-        }, 1000);
+            window.location.href = 'contact-us';
+        }, 500);
         
         // The form will submit normally to the iframe
         // We don't need to prevent default or handle the actual submission
