@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Send data
-            const response = await fetch('https://am.devnagri.com/webhook/e3e13025-5eb5-4402-9ade-4c4cbd41333d', {
+            const response = await fetch('https://am.devnagri.com/webhook/e3e13025-5eb5-4402-9ade-4c4cbd41333d-jp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
