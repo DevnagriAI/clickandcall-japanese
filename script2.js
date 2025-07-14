@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = {
                 name: nameInput.value,
                 email: emailInput.value,
-                phone: (countryCodeInput ? countryCodeInput.value : '') + 
-                       phoneInput.value.replace(/^\+?91/, '')
+                phone: phoneInput.value
+                // phone: (countryCodeInput ? countryCodeInput.value : '') + phoneInput.value.replace(/^\+?91/, '')
             };
             
             // Send data
