@@ -146,3 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+function scrollToDiv() {
+    const targetDiv = document.getElementById('form-container-enhanced-redirect');
+    if (targetDiv) {
+        targetDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+}
