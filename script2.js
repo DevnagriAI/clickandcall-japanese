@@ -21,10 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
     function validateForm() {
         if (!nameInput || !emailInput || !phoneInput || !privacyCheckbox) return false;
         
+        const statusDiv = document.getElementById('form-status');
         const isNameValid = nameInput.value.trim() !== '';
         const isEmailValid = emailInput.value.trim() !== '' && emailInput.validity.valid;
-        const isPhoneValid = phoneInput.value.trim() !== '';
+        const phoneNumber = phoneInput.value.trim();
+        const isPhoneValid = phoneNumber !== '' && /^\d{10}$/.test(phoneNumber);
         const isPrivacyChecked = privacyCheckbox.checked;
+        
+        // Show error message in statusDiv if phone number is not 10 digits
+        if (phoneNumber !== '' && !isPhoneValid) {
+            if (statusDiv) {
+                statusDiv.textContent = 'Please enter a valid 10-digit phone number';
+                statusDiv.style.color = '#EF4444'; // Red color for error
+            }
+        } else if (statusDiv && statusDiv.textContent === 'Please enter a valid 10-digit phone number') {
+            // Clear the error message if it was previously shown
+            statusDiv.textContent = '';
+        }
         
         return isNameValid && isEmailValid && isPhoneValid && isPrivacyChecked;
     }
