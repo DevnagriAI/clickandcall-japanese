@@ -117,14 +117,33 @@ document.addEventListener('DOMContentLoaded', function () {
             const phoneInput = form.querySelector('[name="phone"]');
             const countryCodeInput = form.querySelector('[name="country_code"]');
 
-            if (!nameInput || !emailInput || !phoneInput) {
+            if (!nameInput || !emailInput || !phoneInput || !countryCodeInput) {
                 throw new Error('Required form fields are missing');
+            }
+
+            // Ensure country code is +81
+            if (countryCodeInput.value !== '+81') {
+                statusDiv.textContent = 'Only Japanese phone numbers (+81) are accepted';
+                statusDiv.style.color = '#EF4444';
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                return;
+            }
+
+            // Validate phone number format
+            const phoneNumber = phoneInput.value.trim();
+            if (!/^\d{10,11}$/.test(phoneNumber)) {
+                statusDiv.textContent = 'Please enter a valid 10 or 11 digit Japanese phone number';
+                statusDiv.style.color = '#EF4444';
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+                return;
             }
 
             const formData = {
                 name: nameInput.value,
                 email: emailInput.value,
-                phone: countryCodeInput.value + phoneInput.value
+                phone: '+81' + phoneNumber.replace(/^0+/, '')  // Ensure proper format and remove leading 0
             };
 
             // Send data
