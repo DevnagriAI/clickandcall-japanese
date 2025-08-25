@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ensure country code is +81
             if (countryCodeInput.value !== '+91') {
-                statusDiv.textContent = 'Only Japanese phone numbers (+91) are accepted';
+                statusDiv.textContent = 'Only Japanese phone numbers (+81) are accepted';
                 statusDiv.style.color = '#EF4444';
                 submitButton.disabled = false;
                 submitButton.textContent = originalText;
